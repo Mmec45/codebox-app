@@ -1,8 +1,23 @@
 import { View, Text, ImageBackground, TouchableOpacity } from 'react-native'
 import React from 'react'
 import styles from './style'
+import { client } from '@/constants/KindeConfig'
 
 const LoginScreen = () => {
+
+  const handleSignIn = async () => {
+    const token = await client.login();
+    if (token) {
+      console.log("Authenticated Successfully!!!")
+    }
+  };
+
+  const handleSignUp = async () => {
+    const token = await client.register();
+    if (token) {
+      console.log("Register Successfully!!!")
+    }
+  };
 
   return (
     <View>
@@ -21,12 +36,12 @@ const LoginScreen = () => {
             {/* SignIn Button */}
         <TouchableOpacity
           style={styles.button}
-          onPress={()=>console.log("click Sign in")}
+          onPress={handleSignIn}
         >
           <Text style={styles.textSign}>Sign In</Text>
         </TouchableOpacity>  
         <TouchableOpacity
-         onPress={()=>console.log("click New Account")}
+         onPress={handleSignUp}
         >
           <Text style={styles.textAccount}>Create New Account</Text>
         </TouchableOpacity>
