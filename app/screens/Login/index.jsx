@@ -1,14 +1,18 @@
 import { View, Text, ImageBackground, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './style'
 import { client } from '@/constants/KindeConfig'
+import { AuthContext } from '@/app'
 
 const LoginScreen = () => {
+  
+  const {auth,setAuth} = useContext(AuthContext);
 
   const handleSignIn = async () => {
     const token = await client.login();
     if (token) {
       console.log("Authenticated Successfully!!!")
+      setAuth(true);
     }
   };
 
@@ -16,6 +20,14 @@ const LoginScreen = () => {
     const token = await client.register();
     if (token) {
       console.log("Register Successfully!!!")
+      setAuth(true)
+    }
+  };
+
+  const handleLogout = async() => {
+    const logoutOut = await client.logout();
+    if (logoutOut) {
+      // user was logged out
     }
   };
 
@@ -32,7 +44,6 @@ const LoginScreen = () => {
           <Text style={styles.textContainer}> CodeBox </Text></Text>
         <Text style={styles.textContainerSide}>Learn Programming to buid Real Live Projects </Text>
 
-
             {/* SignIn Button */}
         <TouchableOpacity
           style={styles.button}
@@ -40,6 +51,8 @@ const LoginScreen = () => {
         >
           <Text style={styles.textSign}>Sign In</Text>
         </TouchableOpacity>  
+
+          {/* SignUp Button */}
         <TouchableOpacity
          onPress={handleSignUp}
         >

@@ -1,41 +1,38 @@
-import {  View , StyleSheet} from "react-native";
-import LoginScreen from "./screens/Login";
-import { useEffect } from "react";
+import {  View } from "react-native";
+import { createContext, useEffect, useState } from "react";
 import { client } from "@/constants/KindeConfig";
 
+import LoginScreen from "./screens/Login";
+import styles from "./styles";
+import TabNav from "./navigators/tabNav";
+
+export const AuthContext = createContext();
 
 export default function Index() {
 
+  const [auth, setAuth] = useState(false);
 
   useEffect(() => {
     checkAuthenticate();
-  }, []);
+  }, [auth]);
 
   const checkAuthenticate = async () => {
     // Using `isAuthenticated` to check if the user is authenticated or not
     if (await client.isAuthenticated) {
       const userProfile = await client.getUserDetails();
-       console.log(userProfile);
-       console.log("Authenticate!!!")
+       setAuth(true)
       // Need to implement, e.g: call an api, etc...
     } else {
-      // Need to implement, e.g: redirect user to sign in, etc..
+      setAuth(false)
     }
   };
   
-
   
   return (
     <View style={styles.container}>
-      <LoginScreen/>
+        <AuthContext.Provider value={{auth, setAuth}}> 
+          {auth?<TabNav/>:<LoginScreen/>}
+        </AuthContext.Provider>
     </View>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff'
-  }
-})

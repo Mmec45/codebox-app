@@ -1,13 +1,14 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import styles from './style'
 
-const Home = () => {
+import Styles from './styles'
+
+const Mycourse = () => {
   return (
     <View>
-      <Text>Home</Text>
+      <Text>Mycourse</Text>
     </View>
   )
 }
 
-export default Home
+export default Mycourse

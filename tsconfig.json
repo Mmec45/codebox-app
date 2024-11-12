@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "constants/KindeConfig.js"  ]
+, "constants/KindeConfig.js", "app/styles.jsx", "app/index.jsx", "app/screens/Profile/styles.jsx", "app/screens/Profile/index.jsx", "app/screens/MyCourse/styles.jsx", "app/screens/MyCourse/index.jsx", "app/screens/Login/style.jsx", "app/screens/Login/index.jsx", "app/screens/Home/style.jsx", "app/screens/Home/index.jsx", "app/navigators/tabNav.jsx"  ]
 }

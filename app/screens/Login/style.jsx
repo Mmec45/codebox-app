@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
       objectFit:'cover'
     },
     viewContainer: {
-      padding: 20
+      padding: 10
     },
     textHeader:{
       fontSize: 45,
@@ -18,15 +18,15 @@ const styles = StyleSheet.create({
       color: Colors.PRIMARY
     },
     textContainerSide:{
-      fontSize: 20,
-      marginTop: 7,
+      fontSize: 17,
+      marginTop: 5,
       color: Colors.GRAY
     },
     button:{
       padding: 15,
       backgroundColor:Colors.PRIMARY,
-      borderRadius: 99,
-      marginTop: 60
+      borderRadius: 50,
+      marginTop: 10
     },
     textSign:{
       textAlign:'center',
